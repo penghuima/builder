@@ -25,13 +25,14 @@ import (
 	gcp "github.com/GoogleCloudPlatform/buildpacks/pkg/gcpbuildpack"
 	"github.com/blang/semver"
 )
-
+//定义常量
 const (
 	defaultSource = "app.rb"
 	layerName     = "functions-framework"
 )
 
 var (
+	//github.com/blang/semver 是一个语义化版本处理库，语义化版本（Semantic Versioning）已成为事实上的标准，几乎知名的开源项目都遵循该规范
 	// assumedVersion is the version of the framework used when we cannot determine a version.
 	assumedVersion = semver.MustParse("0.2.0")
 	// recommendedVersion is the lowest version for which a deprecation warning will be hidden.
@@ -45,6 +46,7 @@ func main() {
 }
 
 func detectFn(ctx *gcp.Context) (gcp.DetectResult, error) {
+	//检查env.FunctionTarget:"FUNC_NAME" 这个key 的value在不在
 	if _, ok := os.LookupEnv(env.FunctionTarget); ok {
 		return gcp.OptInEnvSet(env.FunctionTarget), nil
 	}
@@ -82,10 +84,11 @@ func buildFn(ctx *gcp.Context) error {
 // validateSource validates the existence of and returns the source file
 func validateSource(ctx *gcp.Context) (string, error) {
 	fnSource, sourceEnvFound := os.LookupEnv(env.FunctionSource)
+	//将源码 app.rb 赋值给fnSource
 	if !sourceEnvFound {
 		fnSource = defaultSource
 	}
-
+	//检测源文件是否存在
 	if ctx.FileExists(fnSource) {
 		return fnSource, nil
 	}
@@ -98,6 +101,7 @@ func validateSource(ctx *gcp.Context) (string, error) {
 // frameworkVersion validates framework installation and returns the major and minor components of its version
 func frameworkVersion(ctx *gcp.Context) (*semver.Version, error) {
 	cmd := []string{"bundle", "exec", "functions-framework-ruby", "--version"}
+	// ExecWithErr runs the given command (with args) under the default configuration, allowing the caller to handle the error.
 	result, err := ctx.ExecWithErr(cmd)
 	// Failure to execute the binary at all implies the functions_framework is
 	// not properly installed in the user's Gemfile.

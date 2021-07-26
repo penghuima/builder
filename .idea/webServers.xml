@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c482c955-7276-4869-8afd-67606f9ffb34" name="ubuntu18.04" url="http://139.198.29.247">
+        <fileTransfer rootFolder="/root/mph-ruby-project" accessType="SFTP" host="139.198.29.247" port="22" sshConfigId="4d824492-200b-4da4-94e6-83311a4f1900" sshConfig="root@139.198.29.247:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
