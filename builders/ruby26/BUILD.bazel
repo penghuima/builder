@@ -12,5 +12,5 @@ builder(
         "//cmd/utils/archive_source:archive_source.tgz",
         "//cmd/utils/label:label.tgz",
     ],
-    image = "gcf/ruby26",
+    image = "penghuima/ruby26",
 )
