@@ -35,8 +35,8 @@ LABEL io.buildpacks.stack.id=${stack_id}
 RUN groupadd cnb --gid ${cnb_gid} && \
   useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
 #先安装运行环境  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz
-RUN curl --fail --show-error --silent --location --retry 3 https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz --directory /usr/local/  && cd /usr/local/ && ./configure && make && make install --strip-components=1
+#RUN curl --fail --show-error --silent --location --retry 3 https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz --directory /usr/local/  && cd /usr/local/ && ./configure && make && make install --strip-components=1
+RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz && cd ruby-2.1.2 && ./configure && make && sudo make install
 
-ENV CNB_USER_ID=${cnb_uid}
 ENV CNB_GROUP_ID=${cnb_gid}
 ENV CNB_STACK_ID=${stack_id}
