@@ -4,7 +4,9 @@ api = "0.2"
 id = "google.utils.archive-source"
 version = "0.0.1"
 name = "Utils - Archive Source"
-
+#增加一个 ruby26 的stack
+[[stacks]]
+id = "google"
 [[stacks]]
 id = "google.dotnet3"
 

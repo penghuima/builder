@@ -17,7 +17,7 @@ FROM gcr.io/gcp-runtimes/ubuntu_18_0_4
 ARG cnb_uid=1000
 ARG cnb_gid=1000
 ARG stack_id="google"
-:
+
 # Required by python/runtime: libexpat1, libffi6, libmpdecc2.
 # Required by dotnet/runtime: libicu60
 # Required by go/runtime: tzdata (Go may panic without /usr/share/zoneinfo)
