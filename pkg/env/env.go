@@ -126,6 +126,7 @@ func IsUsingNativeImage() (bool, error) {
 
 // Returns true if the environment variable evaluates to True.
 func isPresentAndTrue(varName string) (bool, error) {
+	//LookupEnv檢索由鍵命名的環境變量的值。如果環境中存在變量，則返回值(可能為空)，並且布爾值為true。否則，返回值將為空，布爾值將為false
 	varValue, present := os.LookupEnv(varName)
 	if !present {
 		return false, nil

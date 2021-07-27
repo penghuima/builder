@@ -5,6 +5,9 @@ id = "google.ruby.bundle"
 version = "0.9.0"
 name = "Ruby - Bundle"
 
+#添加一个作用于的stack,Stacks that the buildpack will work with
+[[stacks]]
+id = "google"
 [[stacks]]
 id = "google.ruby25"
 

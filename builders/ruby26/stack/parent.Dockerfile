@@ -17,7 +17,7 @@ FROM gcr.io/gcp-runtimes/ubuntu_18_0_4
 ARG cnb_uid=1000
 ARG cnb_gid=1000
 ARG stack_id="google"
-
+:
 # Required by python/runtime: libexpat1, libffi6, libmpdecc2.
 # Required by dotnet/runtime: libicu60
 # Required by go/runtime: tzdata (Go may panic without /usr/share/zoneinfo)
@@ -36,7 +36,6 @@ LABEL io.buildpacks.stack.id=${stack_id}
 RUN groupadd cnb --gid ${cnb_gid} && \
   useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
 #先安装运行环境  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz
-#安装个ruby 的运行环境这么难吗
 #RUN curl --fail --show-error --silent --location --retry 3 https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz --directory /usr/local/  && cd /usr/local/ && ./configure && make && make install --strip-components=1
 RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz && cd ruby-2.6.6 && ./configure && make && make install
 #RUN curl https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar -xzf - -C /tmp  && export PATH=/tmp/ruby-2.6.6/bin:$PATH
