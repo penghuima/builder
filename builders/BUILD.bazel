@@ -65,7 +65,7 @@ package_group(
 )
 
 package_group(
-    name = "ruby_builders",
+    name = "ruby_builders",   #这里定义的 ruby_builders
     packages = [
         "//builders/base",
         "//builders/ruby26",

@@ -13,7 +13,7 @@ builder(
         ],
     groups = {
         "ruby": [
-            "//cmd/ruby/bundle:bundle.tgz",
+#            "//cmd/ruby/bundle:bundle.tgz",
             "//cmd/ruby/functions_framework:functions_framework.tgz",
         ],
     },
