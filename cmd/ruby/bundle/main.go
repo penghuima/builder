@@ -76,7 +76,7 @@ func buildFn(ctx *gcp.Context) error {
 	if err != nil {
 		return fmt.Errorf("checking cache: %w", err)
 	}
-
+	// .bundle/gems
 	localGemsDir := filepath.Join(".bundle", "gems")
 	localBinDir := filepath.Join(".bundle", "bin")
 

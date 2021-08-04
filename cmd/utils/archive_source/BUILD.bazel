@@ -10,9 +10,9 @@ buildpack(
     executables = [
         ":main",
     ],
-    visibility = [
-        "//builders:function_builders",
-    ],
+#    visibility = [
+#       "//builders:function_builders",
+#   ],
 )
 
 go_binary(
