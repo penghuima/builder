@@ -7,13 +7,13 @@ licenses(["notice"])
 builder(
     name = "builder",
     buildpacks = [
-       "//cmd/utils/archive_source:archive_source.tgz",
-        "//cmd/config/entrypoint:entrypoint.tgz",
+#       "//cmd/utils/archive_source:archive_source.tgz",
+#        "//cmd/config/entrypoint:entrypoint.tgz",
         "//cmd/utils/label:label.tgz",
         ],
     groups = {
         "ruby": [
-#            "//cmd/ruby/bundle:bundle.tgz",
+            "//cmd/ruby/bundle:bundle.tgz",
             "//cmd/ruby/functions_framework:functions_framework.tgz",
         ],
     },
@@ -25,6 +25,7 @@ builder(
 #        "//cmd/utils/archive_source:archive_source.tgz",
 #        "//cmd/utils/label:label.tgz",
 #    ],
+
     image = "penghuima/ruby26",
     visibility = [
             "//builders/ruby26/acceptance:__pkg__",
