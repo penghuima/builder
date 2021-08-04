@@ -22,10 +22,10 @@ description = "Builder for the GCF Ruby 2.6 runtime"
 #    id = "google.utils.archive-source"
 
   [[order.group]]
-    id = "google.ruby.bundle"
+    id = "google.ruby.functions-framework"
 
   [[order.group]]
-    id = "google.ruby.functions-framework"
+    id = "google.ruby.bundle"
 
   [[order.group]]
     id = "google.utils.label"
