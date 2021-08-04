@@ -39,5 +39,6 @@ RUN groupadd cnb --gid ${cnb_gid} && \
 #RUN curl --fail --show-error --silent --location --retry 3 https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz --directory /usr/local/  && cd /usr/local/ && ./configure && make && make install --strip-components=1
 RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz && cd ruby-2.6.6 && ./configure && make && make install
 #RUN curl https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar -xzf - -C /tmp  && export PATH=/tmp/ruby-2.6.6/bin:$PATH
+ENV CNB_USER_ID=${cnb_uid}
 ENV CNB_GROUP_ID=${cnb_gid}
 ENV CNB_STACK_ID=${stack_id}
