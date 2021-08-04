@@ -10,9 +10,9 @@ buildpack(
     executables = [
         ":main",
     ],
-#    visibility = [
+    visibility = [
        "//builders:ruby_builders",
-#   ],
+   ],
 )
 
 go_binary(
