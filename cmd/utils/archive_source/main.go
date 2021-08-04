@@ -36,6 +36,7 @@ func main() {
 
 func detectFn(ctx *gcp.Context) (gcp.DetectResult, error) {
 	// Fail archiving source when users want to clear source from the final container.
+	//在 go 和 java 是支持从最终镜像中删除源码的  env.ClearSource
 	if cs, ok := os.LookupEnv(env.ClearSource); ok {
 		c, err := strconv.ParseBool(cs)
 		if err != nil {

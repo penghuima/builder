@@ -15,6 +15,7 @@
 package env
 
 import (
+	"fmt"
 	"os"
 	"testing"
 )
@@ -63,6 +64,7 @@ func TestIsDebugMode(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
+		fmt.Println("testing")
 		t.Run(tc.name, func(t *testing.T) {
 			if tc.notSet {
 				if err := os.Unsetenv(DebugMode); err != nil {

@@ -348,10 +348,12 @@ func (ctx *Context) HTTPStatus(url string) int {
 
 // AddLabel adds a label to the user's application container.
 func (ctx *Context) AddLabel(key, value string) {
+	//命名是否规范 A-Z a-z
 	if !labelKeyRegexp.MatchString(key) {
 		ctx.Warnf("Label %q does not match %s, skipping.", key, labelKeyRegexpStr)
 		return
 	}
+	//不能连续包含两个下划线
 	if strings.Contains(key, "__") {
 		ctx.Warnf("Label %q must not contain consecutive underscores, skipping.", key)
 		return

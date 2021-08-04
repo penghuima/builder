@@ -34,10 +34,11 @@ func detectFn(ctx *gcp.Context) (gcp.DetectResult, error) {
 
 func buildFn(ctx *gcp.Context) error {
 	for _, e := range os.Environ() {
+		// 查找满足  env.LabelPrefix 前缀的字符串
 		if !strings.HasPrefix(e, env.LabelPrefix) {
 			continue
 		}
-
+		//将 GOOGLE_LABEL_ABC=Some-Value 类似于这样的标签 分为 切片包含2个子字符串
 		parts := strings.SplitN(e, "=", 2)
 		key := strings.TrimPrefix(parts[0], env.LabelPrefix)
 		value := ""

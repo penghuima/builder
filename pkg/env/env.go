@@ -131,10 +131,10 @@ func isPresentAndTrue(varName string) (bool, error) {
 	if !present {
 		return false, nil
 	}
-
+	//strconv是一个类型转换包  其中ParseBool 是将 string--> bool 类型   一般如果环境变量中存在该值，这一步parsebool一般转化失败，返回false
 	parsed, err := strconv.ParseBool(varValue)
 	if err != nil {
-		return false, fmt.Errorf("parsing %s: %v", varName, err)
+		return false, fmt.Errorf("parsing %s: %v", varName, err) //%v普通占位符  fmt.Errorf根据于格式说明符进行格式化，并将字符串作为满足 error 的值返回，其返回类型是error
 	}
 
 	return parsed, nil
