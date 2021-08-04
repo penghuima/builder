@@ -1,8 +1,8 @@
 description = "Builder for the GCF Ruby 2.6 runtime"
 
-[[buildpacks]]
-  id = "google.ruby.bundle"
-  uri = "bundle.tgz"
+#[[buildpacks]]
+#  id = "google.ruby.bundle"
+#  uri = "bundle.tgz"
 
 [[buildpacks]]
   id = "google.ruby.functions-framework"
