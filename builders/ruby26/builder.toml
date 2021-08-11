@@ -20,12 +20,14 @@ description = "Builder for the GCF Ruby 2.6 runtime"
 
 #  [[order.group]]
 #    id = "google.utils.archive-source"
+#调整一下顺序
+  [[order.group]]
+    id = "google.ruby.bundle"
 
   [[order.group]]
     id = "google.ruby.functions-framework"
 
-  [[order.group]]
-    id = "google.ruby.bundle"
+
 
   [[order.group]]
     id = "google.utils.label"
