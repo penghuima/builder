@@ -38,10 +38,13 @@ RUN groupadd cnb --gid ${cnb_gid} && \
 
 # install ruby runtime
 RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz \
-    && cd ruby-2.6.6 && ./configure && make && make install \
-    && ruby ./ext/zlib/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/zlib/Makefile  && make && make install \
-    && ruby ./ext/openssl/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/openssl/Makefile && make && make install \
-    && gem install bundler -v 2.1.4
+    && cd ruby-2.6.6 && ./configure && make && make install  \
+    && cd ext/zlib \
+    && ruby extconf.rb && sed -i 's?$(top_srcdir)?../..?g' Makefile  && make && make install \
+    && cd ../openssl \
+    && ruby extconf.rb && sed -i 's?$(top_srcdir)?../..?g' Makefile && make && make install \
+    && gem install bundler -v 2.1.4 \
+    && cd ../../
 
 ENV CNB_USER_ID=${cnb_uid}
 ENV CNB_GROUP_ID=${cnb_gid}
