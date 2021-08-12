@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libicu60 \
   libc++1-9 \
   tzdata \
-  gcc libc6-dev make wget zlib1g-dev  openssl libssl-dev \
+  gcc libc6-dev make  zlib1g-dev  openssl libssl-dev \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL io.buildpacks.stack.id=${stack_id}
@@ -37,7 +37,7 @@ RUN groupadd cnb --gid ${cnb_gid} && \
   useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
 
 # install ruby runtime
-RUN cd /tmp && mkdir ruby && cd ruby && wget  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar -xzfv \
+RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar xz \
     && cd ruby-2.6.6 && ./configure && make && make install \
     && ruby  ./ext/zlib/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/zlib/Makefile  && make && make install \
     && ruby  ./ext/openssl/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/openssl/Makefile && make && make install \
