@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libicu60 \
   libc++1-9 \
   tzdata \
-  gcc libc6-dev make wget zlib  openssl-devel \
+  gcc libc6-dev make wget zlib1g-dev  openssl libssl-dev \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL io.buildpacks.stack.id=${stack_id}
