@@ -34,8 +34,8 @@ description = "Builder for the GCF Ruby 2.6 runtime"
 
 [stack]
   id = "google"
-  build-image = "penghuima/buildpacks-ruby26-build:v1"
-  run-image = "penghuima/buildpacks-ruby26-run:v1"
+  build-image = "gcr.io/gae-runtimes/buildpacks/ruby26/build"
+  run-image = "gcr.io/gae-runtimes/buildpacks/ruby26/run"
 
 [lifecycle]
   version = "0.11.1"
