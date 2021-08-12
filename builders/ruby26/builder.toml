@@ -33,7 +33,7 @@ description = "Builder for the GCF Ruby 2.6 runtime"
     id = "google.utils.label"
 
 [stack]
-  id = "google"
+  id = "google.ruby26"
   build-image = "gcr.io/gae-runtimes/buildpacks/ruby26/build"
   run-image = "gcr.io/gae-runtimes/buildpacks/ruby26/run"
 
