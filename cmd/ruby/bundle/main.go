@@ -84,7 +84,7 @@ func buildFn(ctx *gcp.Context) error {
 	ctx.Exec([]string{"bundle", "config", "--local", "without", "development test"}, gcp.WithUserAttribution)
 	ctx.Exec([]string{"bundle", "config", "--local", "path", localGemsDir}, gcp.WithUserAttribution)
 	//	ctx.Exec([]string{"bundle", "lock", "--add-platform", "x86_64-linux"}, gcp.WithUserAttribution)
-	ctx.Exec([]string{"bundle", "lock", "--add-platform", "ruby"}, gcp.WithUserAttribution)
+	//ctx.Exec([]string{"bundle", "lock", "--add-platform", "ruby"}, gcp.WithUserAttribution)
 	ctx.RemoveAll(".bundle")
 
 	if cached {
