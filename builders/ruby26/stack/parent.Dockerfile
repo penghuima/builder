@@ -28,18 +28,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libicu60 \
   libc++1-9 \
   tzdata \
-  gcc libc6-dev make zlib wget\
+  gcc libc6-dev make wget zlib  openssl-devel \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL io.buildpacks.stack.id=${stack_id}
 
 RUN groupadd cnb --gid ${cnb_gid} && \
   useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
-#先安装运行环境
+
+# install ruby runtime
 RUN cd /tmp && mkdir ruby && cd ruby && wget  https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz | tar -xzfv \
     && cd ruby-2.6.6 && ./configure && make && make install \
-    && sed -i 's?$(top_srcdir)?../..?' ./ext/zlib/Makefile  && make && make install
-
+    && ruby  ./ext/zlib/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/zlib/Makefile  && make && make install \
+    && ruby  ./ext/openssl/extconf.rb && sed -i 's?$(top_srcdir)?../..?g' ./ext/openssl/Makefile && make && make install \
+    && gem install bundle -v 2.1.4
 
 ENV CNB_USER_ID=${cnb_uid}
 ENV CNB_GROUP_ID=${cnb_gid}
