@@ -41,7 +41,7 @@ RUN cd /tmp && mkdir ruby && cd ruby && curl  https://cache.ruby-lang.org/pub/ru
     && cd ruby-2.6.6 && ./configure && make && make install  \
     && cd ext/zlib \
     && ruby extconf.rb && sed -i 's?$(top_srcdir)?../..?g' Makefile  && make && make install \
-    && cd ../openssl \doc
+    && cd ../openssl \
     && ruby extconf.rb && sed -i 's?$(top_srcdir)?../..?g' Makefile && make && make install \
     && gem install bundler -v 2.1.4 \
     && cd ../../
